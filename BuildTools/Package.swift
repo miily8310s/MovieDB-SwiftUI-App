@@ -3,9 +3,10 @@ import PackageDescription
 
 let package = Package(
     name: "BuildTools",
-    platforms: [.macOS(.v10_11)],
+    platforms: [.macOS(.v10_13)],
     dependencies: [
-        .package(url: "https://github.com/nicklockwood/SwiftFormat", from: "0.53.10")
+        .package(url: "https://github.com/nicklockwood/SwiftFormat", from: "0.53.10"),
+        .package(url: "https://github.com/realm/SwiftLint.git", branch: "main")
     ],
     targets: [.target(name: "BuildTools", path: "")]
 )
