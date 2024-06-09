@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeScreenView: View {
     @State private var trendMovies = [TrendMovie]()
+    @State private var nowPlayingMovies = [NowPlayingMovie]()
 
     let coumns = [
         GridItem(.adaptive(minimum: 80)),
@@ -19,6 +20,7 @@ struct HomeScreenView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
+                MovieCarousel(nowPlayingMovies: nowPlayingMovies)
                 LazyVGrid(columns: coumns, spacing: 20) {
                     ForEach(trendMovies, id: \.id) { movie in
                         MovieFeatureCard(movie: movie)
@@ -27,8 +29,10 @@ struct HomeScreenView: View {
             }
             .task {
                 do {
-                    let result = try await MovieService().getTrendMovies()
-                    trendMovies = result
+                    let trends = try await MovieService().getTrendMovies()
+                    let nowPlayings = try await MovieService().getNowPlayingMovies()
+                    trendMovies = trends
+                    nowPlayingMovies = Array(nowPlayings.prefix(5))
                 } catch {
                     print("movies not found")
                 }
@@ -38,8 +42,3 @@ struct HomeScreenView: View {
         }
     }
 }
-
-//
-// #Preview {
-//    HomeScreenView()
-// }
