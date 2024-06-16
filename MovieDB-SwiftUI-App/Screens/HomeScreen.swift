@@ -23,7 +23,9 @@ struct HomeScreenView: View {
                 MovieCarousel(nowPlayingMovies: nowPlayingMovies)
                 LazyVGrid(columns: coumns, spacing: 20) {
                     ForEach(trendMovies, id: \.id) { movie in
-                        MovieFeatureCard(movie: movie)
+                        NavigationLink(destination: DetailsScreen(id: movie.id)) {
+                            MovieFeatureCard(movie: movie)
+                        }
                     }
                 }
             }

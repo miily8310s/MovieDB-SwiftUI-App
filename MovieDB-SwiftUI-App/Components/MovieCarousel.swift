@@ -13,24 +13,18 @@ struct MovieCarousel: View {
     var body: some View {
         TabView {
             ForEach(nowPlayingMovies, id: \.id) { movie in
-                AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/original\(movie.backdropPath)")) { phase in
-                    if let image = phase.image {
-                        image
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
+                MovieImage(urlPath: movie.backdropPath, height: 240)
+                    .overlay(alignment: .bottomLeading) {
+                        VStack(alignment: .leading) {
+                            Text(movie.title)
+                                .font(.headline)
+                                .foregroundStyle(.white)
+                            Text(movie.releaseDate)
+                                .font(.subheadline)
+                                .foregroundStyle(.gray)
+                        }
+                        .padding()
                     }
-                }
-                .overlay(alignment: .bottomLeading) {
-                    VStack(alignment: .leading) {
-                        Text(movie.title)
-                            .font(.headline)
-                            .foregroundStyle(.white)
-                        Text(movie.releaseDate)
-                            .font(.subheadline)
-                            .foregroundStyle(.gray)
-                    }
-                    .padding()
-                }
             }
         }
         .tabViewStyle(.page)

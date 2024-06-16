@@ -58,7 +58,7 @@ struct Dates: Codable {
     let maximum, minimum: String
 }
 
-// MARK: - Result
+// MARK: - NowPlayingMovie
 
 struct NowPlayingMovie: Codable {
     let backdropPath: String
@@ -72,4 +72,125 @@ struct NowPlayingMovie: Codable {
         case id
         case title
     }
+}
+
+// MARK: - MovieDetail
+
+// https://developer.themoviedb.org/reference/movie-details
+
+struct MovieDetail: Codable {
+    let backdropPath: String
+    let genres: [Genre]
+    let homepage: String
+    let id: Int
+    let imdbID, overview: String
+    let originalLanguage: String
+    let releaseDate: String
+    let runtime: Int
+    let status, title: String
+    let voteAverage: Double
+
+    enum CodingKeys: String, CodingKey {
+        case backdropPath = "backdrop_path"
+        case genres, homepage, id
+        case imdbID = "imdb_id"
+        case overview
+        case originalLanguage = "original_language"
+        case releaseDate = "release_date"
+        case runtime, status, title
+        case voteAverage = "vote_average"
+    }
+}
+
+// MARK: - Genre
+
+struct Genre: Codable {
+    let id: Int
+    let name: String
+}
+
+// MARK: - Credits
+
+// https://developer.themoviedb.org/reference/movie-credits
+
+struct Credits: Codable {
+    let id: Int
+    let cast: [Cast]
+}
+
+// MARK: - Cast
+
+struct Cast: Codable {
+    let adult: Bool
+    let gender, id: Int
+    let name, originalName: String
+    let popularity: Double
+    let profilePath: String
+    let castID: Int
+    let character, creditID: String
+    let order: Int
+
+    enum CodingKeys: String, CodingKey {
+        case adult, gender, id, name
+        case originalName = "original_name"
+        case popularity
+        case profilePath = "profile_path"
+        case castID = "cast_id"
+        case character
+        case creditID = "credit_id"
+        case order
+    }
+}
+
+// MARK: - Recommendations
+
+// https://developer.themoviedb.org/reference/movie-recommendations
+struct Recommendations: Codable {
+    let page: Int
+    let results: [Recommendation]
+    let totalPages, totalResults: Int
+
+    enum CodingKeys: String, CodingKey {
+        case page, results
+        case totalPages = "total_pages"
+        case totalResults = "total_results"
+    }
+}
+
+// MARK: - Recommendation
+
+struct Recommendation: Codable {
+    let backdropPath: String
+    let id: Int
+    let originalTitle, overview, posterPath: String
+    let mediaType: MediaType
+    let adult: Bool
+    let title, originalLanguage: String
+    let genreIDS: [Int]
+    let popularity: Double
+    let releaseDate: String
+    let video: Bool
+    let voteAverage: Double
+    let voteCount: Int
+
+    enum CodingKeys: String, CodingKey {
+        case backdropPath = "backdrop_path"
+        case id
+        case originalTitle = "original_title"
+        case overview
+        case posterPath = "poster_path"
+        case mediaType = "media_type"
+        case adult, title
+        case originalLanguage = "original_language"
+        case genreIDS = "genre_ids"
+        case popularity
+        case releaseDate = "release_date"
+        case video
+        case voteAverage = "vote_average"
+        case voteCount = "vote_count"
+    }
+}
+
+enum MediaType: String, Codable {
+    case movie
 }
