@@ -121,23 +121,14 @@ struct Credits: Codable {
 // MARK: - Cast
 
 struct Cast: Codable {
-    let adult: Bool
-    let gender, id: Int
-    let name, originalName: String
-    let popularity: Double
-    let profilePath: String
-    let castID: Int
-    let character, creditID: String
+    let id: Int
+    let name: String
+    let profilePath: String?
     let order: Int
 
     enum CodingKeys: String, CodingKey {
-        case adult, gender, id, name
-        case originalName = "original_name"
-        case popularity
+        case id, name
         case profilePath = "profile_path"
-        case castID = "cast_id"
-        case character
-        case creditID = "credit_id"
         case order
     }
 }
@@ -160,37 +151,19 @@ struct Recommendations: Codable {
 // MARK: - Recommendation
 
 struct Recommendation: Codable {
-    let backdropPath: String
     let id: Int
-    let originalTitle, overview, posterPath: String
-    let mediaType: MediaType
-    let adult: Bool
-    let title, originalLanguage: String
-    let genreIDS: [Int]
-    let popularity: Double
+    let posterPath: String
+    let title: String
     let releaseDate: String
-    let video: Bool
     let voteAverage: Double
     let voteCount: Int
 
     enum CodingKeys: String, CodingKey {
-        case backdropPath = "backdrop_path"
         case id
-        case originalTitle = "original_title"
-        case overview
         case posterPath = "poster_path"
-        case mediaType = "media_type"
-        case adult, title
-        case originalLanguage = "original_language"
-        case genreIDS = "genre_ids"
-        case popularity
+        case title
         case releaseDate = "release_date"
-        case video
         case voteAverage = "vote_average"
         case voteCount = "vote_count"
     }
-}
-
-enum MediaType: String, Codable {
-    case movie
 }

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MovieImage: View {
     let urlPath: String
-    var height: Int = 200
+    var height: Int?
 
     func getUrl() -> URL {
         URL(string: "https://image.tmdb.org/t/p/original\(urlPath)")!
@@ -27,7 +27,7 @@ struct MovieImage: View {
                 ProgressView()
             }
         }
-        .frame(height: CGFloat(height))
+        .frame(height: CGFloat(height ?? 200))
     }
 }
 

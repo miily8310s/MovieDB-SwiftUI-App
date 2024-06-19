@@ -24,7 +24,11 @@ struct HomeScreenView: View {
                 LazyVGrid(columns: coumns, spacing: 20) {
                     ForEach(trendMovies, id: \.id) { movie in
                         NavigationLink(destination: DetailsScreen(id: movie.id)) {
-                            MovieFeatureCard(movie: movie)
+                            MovieFeatureCard(
+                                posterPath: movie.posterPath,
+                                title: movie.title,
+                                voteAverage: movie.voteAverage
+                            )
                         }
                     }
                 }
