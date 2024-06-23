@@ -1,3 +1,4 @@
 BuildTools/.build
 BuildTools/.swiftpm/xcode/xcuserdata/
 *.xcodeproj/xcuserdata/*.xcuserdatad
+*.xcodeproj/project.xcworkspace/xcuserdata/

@@ -12,10 +12,12 @@
 		030D762A2C0AED1A002345BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 030D76292C0AED1A002345BF /* Assets.xcassets */; };
 		030D762D2C0AED1A002345BF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 030D762C2C0AED1A002345BF /* Preview Assets.xcassets */; };
 		032C2D432C11E5FE00234E76 /* MovieCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032C2D422C11E5FD00234E76 /* MovieCarousel.swift */; };
+		03311B812C19198600AD0F77 /* DetailsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03311B802C19198600AD0F77 /* DetailsScreen.swift */; };
 		037EC9C42C0E8DA000DC4540 /* MovieFeatureCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037EC9C32C0E8DA000DC4540 /* MovieFeatureCard.swift */; };
 		03AD2B472C0D418A0081C116 /* MovieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AD2B462C0D418A0081C116 /* MovieService.swift */; };
 		03AD2B492C0D41A80081C116 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AD2B482C0D41A80081C116 /* Movie.swift */; };
 		03B501032C0EDFE1006F197E /* MovieImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B501022C0EDFE1006F197E /* MovieImage.swift */; };
+		03C6A61E2C2069A2008F96D0 /* MovieImageCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C6A61D2C2069A2008F96D0 /* MovieImageCircle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,10 +27,12 @@
 		030D76292C0AED1A002345BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		030D762C2C0AED1A002345BF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		032C2D422C11E5FD00234E76 /* MovieCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCarousel.swift; sourceTree = "<group>"; };
+		03311B802C19198600AD0F77 /* DetailsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsScreen.swift; sourceTree = "<group>"; };
 		037EC9C32C0E8DA000DC4540 /* MovieFeatureCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieFeatureCard.swift; sourceTree = "<group>"; };
 		03AD2B462C0D418A0081C116 /* MovieService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieService.swift; sourceTree = "<group>"; };
 		03AD2B482C0D41A80081C116 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		03B501022C0EDFE1006F197E /* MovieImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieImage.swift; sourceTree = "<group>"; };
+		03C6A61D2C2069A2008F96D0 /* MovieImageCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieImageCircle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				030D76272C0AED19002345BF /* HomeScreen.swift */,
+				03311B802C19198600AD0F77 /* DetailsScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -94,6 +99,7 @@
 				037EC9C32C0E8DA000DC4540 /* MovieFeatureCard.swift */,
 				03B501022C0EDFE1006F197E /* MovieImage.swift */,
 				032C2D422C11E5FD00234E76 /* MovieCarousel.swift */,
+				03C6A61D2C2069A2008F96D0 /* MovieImageCircle.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -227,8 +233,10 @@
 				030D76282C0AED19002345BF /* HomeScreen.swift in Sources */,
 				037EC9C42C0E8DA000DC4540 /* MovieFeatureCard.swift in Sources */,
 				032C2D432C11E5FE00234E76 /* MovieCarousel.swift in Sources */,
+				03311B812C19198600AD0F77 /* DetailsScreen.swift in Sources */,
 				03AD2B492C0D41A80081C116 /* Movie.swift in Sources */,
 				03B501032C0EDFE1006F197E /* MovieImage.swift in Sources */,
+				03C6A61E2C2069A2008F96D0 /* MovieImageCircle.swift in Sources */,
 				030D76262C0AED19002345BF /* MovieDB_SwiftUI_App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

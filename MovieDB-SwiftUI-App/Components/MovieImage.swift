@@ -9,8 +9,14 @@ import SwiftUI
 
 struct MovieImage: View {
     let urlPath: String
+    var height: Int?
+
+    func getUrl() -> URL {
+        URL(string: "https://image.tmdb.org/t/p/original\(urlPath)")!
+    }
+
     var body: some View {
-        AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w300\(urlPath)")!) { phase in
+        AsyncImage(url: getUrl()) { phase in
             if let image = phase.image {
                 image
                     .resizable()
@@ -21,7 +27,7 @@ struct MovieImage: View {
                 ProgressView()
             }
         }
-        .frame(height: 200)
+        .frame(height: CGFloat(height ?? 200))
     }
 }
 
