@@ -12,9 +12,13 @@ struct MovieDB_SwiftUI_App: App {
     var body: some Scene {
         WindowGroup {
             TabView {
-                HomeScreenView()
+                HomeScreen()
                     .tabItem {
                         Label("Feature", systemImage: "house.fill")
+                    }
+                RankingScreen()
+                    .tabItem {
+                        Label("Top Charts", systemImage: "popcorn.fill")
                     }
             }
         }
