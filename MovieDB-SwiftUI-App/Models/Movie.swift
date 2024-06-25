@@ -167,3 +167,47 @@ struct Recommendation: Codable {
         case voteCount = "vote_count"
     }
 }
+
+// MARK: - PopularMovies
+
+// https://developer.themoviedb.org/reference/movie-popular-list
+struct PopularMovies: Codable {
+    let page: Int
+    let results: [TopMovie]
+    let totalPages, totalResults: Int
+
+    enum CodingKeys: String, CodingKey {
+        case page, results
+        case totalPages = "total_pages"
+        case totalResults = "total_results"
+    }
+}
+
+// MARK: - TopRatedMovies
+
+// https://developer.themoviedb.org/reference/movie-top-rated-list
+struct TopRatedMovies: Codable {
+    let page: Int
+    let results: [TopMovie]
+    let totalPages, totalResults: Int
+
+    enum CodingKeys: String, CodingKey {
+        case page, results
+        case totalPages = "total_pages"
+        case totalResults = "total_results"
+    }
+}
+
+// MARK: - TopMovie
+
+struct TopMovie: Codable {
+    let id: Int
+    let posterPath, releaseDate, title: String
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case posterPath = "poster_path"
+        case releaseDate = "release_date"
+        case title
+    }
+}

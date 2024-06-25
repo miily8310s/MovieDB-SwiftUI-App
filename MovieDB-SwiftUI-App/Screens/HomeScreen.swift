@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HomeScreenView: View {
+struct HomeScreen: View {
     @State private var trendMovies = [TrendMovie]()
     @State private var nowPlayingMovies = [NowPlayingMovie]()
 

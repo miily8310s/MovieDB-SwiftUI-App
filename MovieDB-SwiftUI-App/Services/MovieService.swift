@@ -92,4 +92,56 @@ struct MovieService {
         let movie = try JSONDecoder().decode(Recommendations.self, from: data)
         return movie.results
     }
+
+    func getPopularMovies() async throws -> [TopMovie] {
+        var urlComponents = URLComponents(string: "https://api.themoviedb.org/3/discover/movie")!
+        urlComponents.queryItems = [
+            URLQueryItem(name: "include_adult", value: "false"),
+            URLQueryItem(name: "include_video", value: "false"),
+            URLQueryItem(name: "language", value: "en-US"),
+            URLQueryItem(name: "page", value: "1"),
+            URLQueryItem(name: "sort_by", value: "popularity.desc")
+        ]
+        guard let url = urlComponents.url else {
+            throw URLError(.badURL)
+        }
+        guard let token = ProcessInfo.processInfo.environment["MOVIE_TOKEN"] else {
+            print("not found token")
+            throw URLError(.badURL)
+        }
+        var request = URLRequest(url: url)
+        request.setValue("application/json", forHTTPHeaderField: "accept")
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+
+        let (data, _) = try await URLSession.shared.data(for: request)
+        let movies = try JSONDecoder().decode(PopularMovies.self, from: data)
+        return movies.results
+    }
+
+    func getTopRatedMovies() async throws -> [TopMovie] {
+        var urlComponents = URLComponents(string: "https://api.themoviedb.org/3/discover/movie")!
+        urlComponents.queryItems = [
+            URLQueryItem(name: "include_adult", value: "false"),
+            URLQueryItem(name: "include_video", value: "false"),
+            URLQueryItem(name: "language", value: "en-US"),
+            URLQueryItem(name: "page", value: "1"),
+            URLQueryItem(name: "sort_by", value: "vote_average.desc"),
+            URLQueryItem(name: "without_genres", value: "99,10755"),
+            URLQueryItem(name: "vote_count.gte", value: "200")
+        ]
+        guard let url = urlComponents.url else {
+            throw URLError(.badURL)
+        }
+        guard let token = ProcessInfo.processInfo.environment["MOVIE_TOKEN"] else {
+            print("not found token")
+            throw URLError(.badURL)
+        }
+        var request = URLRequest(url: url)
+        request.setValue("application/json", forHTTPHeaderField: "accept")
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+
+        let (data, _) = try await URLSession.shared.data(for: request)
+        let movies = try JSONDecoder().decode(TopRatedMovies.self, from: data)
+        return movies.results
+    }
 }
