@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		030CDC2F2C2AFAE2006EBC84 /* SearchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030CDC2E2C2AFAE2006EBC84 /* SearchScreen.swift */; };
 		030D76262C0AED19002345BF /* MovieDB_SwiftUI_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030D76252C0AED19002345BF /* MovieDB_SwiftUI_App.swift */; };
 		030D76282C0AED19002345BF /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030D76272C0AED19002345BF /* HomeScreen.swift */; };
 		030D762A2C0AED1A002345BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 030D76292C0AED1A002345BF /* Assets.xcassets */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		030CDC2E2C2AFAE2006EBC84 /* SearchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreen.swift; sourceTree = "<group>"; };
 		030D76222C0AED19002345BF /* MovieDB-SwiftUI-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MovieDB-SwiftUI-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		030D76252C0AED19002345BF /* MovieDB_SwiftUI_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDB_SwiftUI_App.swift; sourceTree = "<group>"; };
 		030D76272C0AED19002345BF /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 				030D76272C0AED19002345BF /* HomeScreen.swift */,
 				03311B802C19198600AD0F77 /* DetailsScreen.swift */,
 				039AA91E2C280035009342D7 /* RankingScreen.swift */,
+				030CDC2E2C2AFAE2006EBC84 /* SearchScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -246,6 +249,7 @@
 				03C6A61E2C2069A2008F96D0 /* MovieImageCircle.swift in Sources */,
 				030D76262C0AED19002345BF /* MovieDB_SwiftUI_App.swift in Sources */,
 				039AA91F2C280035009342D7 /* RankingScreen.swift in Sources */,
+				030CDC2F2C2AFAE2006EBC84 /* SearchScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

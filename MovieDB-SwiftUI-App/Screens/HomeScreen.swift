@@ -45,6 +45,13 @@ struct HomeScreen: View {
             }
             .navigationTitle("Feature")
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    NavigationLink(destination: SearchScreen()) {
+                        Label("Search", systemImage: "magnifyingglass")
+                    }
+                }
+            }
         }
     }
 }

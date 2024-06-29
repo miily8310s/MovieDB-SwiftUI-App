@@ -63,6 +63,7 @@ struct RankingScreen: View {
     }
 }
 
-#Preview {
-    RankingScreen()
-}
+//
+// #Preview {
+//    RankingScreen()
+// }

@@ -211,3 +211,34 @@ struct TopMovie: Codable {
         case title
     }
 }
+
+// MARK: - SearchMovies
+
+// https://developer.themoviedb.org/reference/search-movie
+struct SearchMovies: Codable {
+    let page: Int
+    let results: [SearchMovie]
+    let totalPages, totalResults: Int
+
+    enum CodingKeys: String, CodingKey {
+        case page, results
+        case totalPages = "total_pages"
+        case totalResults = "total_results"
+    }
+}
+
+// MARK: - SearchMovie
+
+struct SearchMovie: Codable {
+    let id: Int
+    let posterPath: String
+    let title: String
+    let voteAverage: Double
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case posterPath = "poster_path"
+        case title
+        case voteAverage = "vote_average"
+    }
+}
