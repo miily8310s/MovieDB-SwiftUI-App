@@ -15,11 +15,21 @@ struct DetailsScreen: View {
     @State private var recommendation = [Recommendation]()
 
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.managedObjectContext) private var managedObjectContext
 
     func runTimeString(_ originalTime: Int) -> String {
         let hour = originalTime / 60
         let min = originalTime - (60 * hour)
         return "\(hour)h\(min)min"
+    }
+
+    func addFavorite(movieId: Int, title: String, posterPath: String, releaseDate: String) {
+        let movie = FavoriteMovie(context: managedObjectContext)
+        movie.id = UUID()
+        movie.title = title
+        movie.movieId = Int32(movieId)
+        movie.posterPath = posterPath
+        movie.releaseDate = releaseDate
     }
 
     var body: some View {
@@ -40,7 +50,13 @@ struct DetailsScreen: View {
                                 Spacer()
                                 HStack(alignment: .center) {
                                     Button {
-                                        // TODO: いいね機能
+                                        // TODO: 押した後にハート色が変わるように
+                                        addFavorite(
+                                            movieId: movie!.id,
+                                            title: movie!.title,
+                                            posterPath: movie!.posterPath,
+                                            releaseDate: movie!.releaseDate
+                                        )
                                     } label: {
                                         Image(systemName: "heart")
                                             .resizable()

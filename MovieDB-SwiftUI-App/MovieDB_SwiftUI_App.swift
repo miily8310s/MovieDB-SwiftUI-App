@@ -9,6 +9,8 @@ import SwiftUI
 
 @main
 struct MovieDB_SwiftUI_App: App {
+    @StateObject private var coreDataController = CoreDataController()
+
     var body: some Scene {
         WindowGroup {
             TabView {
@@ -20,7 +22,12 @@ struct MovieDB_SwiftUI_App: App {
                     .tabItem {
                         Label("Top Charts", systemImage: "popcorn.fill")
                     }
+                FavoriteScreen()
+                    .tabItem {
+                        Label("Favorite", systemImage: "star.circle.fill")
+                    }
             }
+            .environment(\.managedObjectContext, coreDataController.container.viewContext)
         }
     }
 }

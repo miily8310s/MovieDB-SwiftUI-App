@@ -28,7 +28,7 @@ struct RankingScreen: View {
                             .tint(.gray)
                         }
                     } header: {
-                        Picker("What is your favorite color?", selection: $rankingType) {
+                        Picker("Ranking Type", selection: $rankingType) {
                             Text("Popular").tag(0)
                             Text("Rating").tag(1)
                         }
