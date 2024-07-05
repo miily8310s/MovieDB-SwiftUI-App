@@ -13,7 +13,7 @@ struct MovieCarousel: View {
     var body: some View {
         TabView {
             ForEach(nowPlayingMovies, id: \.id) { movie in
-                MovieImage(urlPath: movie.backdropPath, height: 240)
+                MovieImage(urlPath: movie.backdropPath ?? "", height: 240)
                     .overlay(alignment: .bottomLeading) {
                         VStack(alignment: .leading) {
                             Text(movie.title)

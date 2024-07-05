@@ -61,7 +61,7 @@ struct Dates: Codable {
 // MARK: - NowPlayingMovie
 
 struct NowPlayingMovie: Codable {
-    let backdropPath: String
+    let backdropPath: String?
     let id: Int
     let title: String
     let releaseDate: String

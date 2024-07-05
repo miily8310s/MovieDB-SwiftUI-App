@@ -5,6 +5,7 @@
 //  Created by erika yoshikawa on 2024/06/12.
 //
 
+import CoreData
 import SwiftUI
 
 struct DetailsScreen: View {
@@ -16,6 +17,16 @@ struct DetailsScreen: View {
 
     @Environment(\.dismiss) private var dismiss
     @Environment(\.managedObjectContext) private var managedObjectContext
+
+    @FetchRequest private var fetchCoreData: FetchedResults<FavoriteMovie>
+
+    init(id: Int) {
+        self.id = id
+        _fetchCoreData = FetchRequest<FavoriteMovie>(
+            sortDescriptors: [],
+            predicate: NSPredicate(format: "movieId == %i", id)
+        )
+    }
 
     func runTimeString(_ originalTime: Int) -> String {
         let hour = originalTime / 60
@@ -30,6 +41,23 @@ struct DetailsScreen: View {
         movie.movieId = Int32(movieId)
         movie.posterPath = posterPath
         movie.releaseDate = releaseDate
+
+        do {
+            try managedObjectContext.save()
+        } catch {
+            print("fail to add favorite")
+        }
+    }
+
+    func deleteFavorite() {
+        let movie = fetchCoreData[0]
+        managedObjectContext.delete(movie)
+
+        do {
+            try managedObjectContext.save()
+        } catch {
+            print("fail to delete favorite")
+        }
     }
 
     var body: some View {
@@ -50,15 +78,18 @@ struct DetailsScreen: View {
                                 Spacer()
                                 HStack(alignment: .center) {
                                     Button {
-                                        // TODO: 押した後にハート色が変わるように
-                                        addFavorite(
-                                            movieId: movie!.id,
-                                            title: movie!.title,
-                                            posterPath: movie!.posterPath,
-                                            releaseDate: movie!.releaseDate
-                                        )
+                                        if fetchCoreData.isEmpty {
+                                            addFavorite(
+                                                movieId: movie!.id,
+                                                title: movie!.title,
+                                                posterPath: movie!.posterPath,
+                                                releaseDate: movie!.releaseDate
+                                            )
+                                        } else {
+                                            deleteFavorite()
+                                        }
                                     } label: {
-                                        Image(systemName: "heart")
+                                        Image(systemName: fetchCoreData.isEmpty ? "heart" : "heart.fill")
                                             .resizable()
                                             .aspectRatio(contentMode: .fit)
                                             .frame(width: 24, height: 24)
