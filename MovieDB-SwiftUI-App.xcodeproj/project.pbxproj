@@ -157,7 +157,6 @@
 				030D761F2C0AED19002345BF /* Frameworks */,
 				030D76202C0AED19002345BF /* Resources */,
 				039475522C0B02C3001BE137 /* ShellScript */,
-				039336962C0C599F00206DBD /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -214,23 +213,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		039336962C0C599F00206DBD /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "cd BuildTools\nSDKROOT=macosx\n\nswift run -c release swiftlint --config $SRCROOT/.swiftlint.yml\n";
-		};
 		039475522C0B02C3001BE137 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -246,7 +228,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd BuildTools\nSDKROOT=(xcrun --sdk macosx --show-sdk-path)\n#swift package update #Uncomment this line temporarily to update the version used to the latest matching your BuildTools/Package.swift file\nswift run -c release swiftformat --config $PROJECT_DIR/.swiftformat \"$SRCROOT\"\n";
+			shellScript = "cd BuildTools\nSDKROOT=(xcrun --sdk macosx --show-sdk-path)\n#swift package update #Uncomment this line temporarily to update the version used to the latest matching your BuildTools/Package.swift file\nswift run -c release swiftformat --config $PROJECT_DIR/.swiftformat \"$SRCROOT\"\nswift run -c release swiftlint --config $SRCROOT/.swiftlint.yml\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

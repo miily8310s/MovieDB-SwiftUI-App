@@ -13,10 +13,14 @@ struct FavoriteScreen: View {
 
     var body: some View {
         NavigationStack {
-//            ScrollView {
             List {
                 ForEach(movies, id: \.id) { movie in
-                    NavigationLink(destination: DetailsScreen(id: Int(movie.movieId))) {
+                    // https://forums.developer.apple.com/forums/thread/701449
+                    ZStack {
+                        NavigationLink(destination: DetailsScreen(id: Int(movie.movieId)), label: {
+                            EmptyView()
+                        })
+                        .opacity(0.0)
                         MovieListCard(
                             num: nil,
                             title: movie.title!,
@@ -24,7 +28,6 @@ struct FavoriteScreen: View {
                             releaseDate: movie.releaseDate!
                         )
                     }
-                    .tint(.gray)
                 }
                 .onDelete(perform: { indexSet in
                     for index in indexSet {
@@ -39,7 +42,7 @@ struct FavoriteScreen: View {
                     }
                 })
             }
-//            }
+            .listStyle(.plain)
             .navigationTitle("Favorite")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

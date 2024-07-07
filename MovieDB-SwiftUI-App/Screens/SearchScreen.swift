@@ -44,6 +44,7 @@ struct SearchScreen: View {
                         }
                     }
                 }
+                .padding(.horizontal)
             }
             .navigationTitle("Search")
             .navigationBarTitleDisplayMode(.inline)

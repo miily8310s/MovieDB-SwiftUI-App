@@ -69,98 +69,103 @@ struct DetailsScreen: View {
                         ProgressView()
                     }
                 } else {
-                    VStack(alignment: .leading) {
-                        MovieImage(urlPath: movie!.backdropPath, height: 300)
+                    VStack {
+                        VStack {
+                            MovieImage(urlPath: movie!.backdropPath, height: 300, contentMode: .fill)
+                                .frame(maxWidth: 140)
+                        }
                         VStack(alignment: .leading) {
-                            HStack(alignment: .center) {
-                                Text(movie!.title)
-                                    .font(.title)
-                                Spacer()
+                            VStack(alignment: .leading) {
                                 HStack(alignment: .center) {
-                                    Button {
-                                        if fetchCoreData.isEmpty {
-                                            addFavorite(
-                                                movieId: movie!.id,
-                                                title: movie!.title,
-                                                posterPath: movie!.posterPath,
-                                                releaseDate: movie!.releaseDate
-                                            )
-                                        } else {
-                                            deleteFavorite()
+                                    Text(movie!.title)
+                                        .font(.title)
+                                    Spacer()
+                                    HStack(alignment: .center) {
+                                        Button {
+                                            if fetchCoreData.isEmpty {
+                                                addFavorite(
+                                                    movieId: movie!.id,
+                                                    title: movie!.title,
+                                                    posterPath: movie!.posterPath,
+                                                    releaseDate: movie!.releaseDate
+                                                )
+                                            } else {
+                                                deleteFavorite()
+                                            }
+                                        } label: {
+                                            Image(systemName: fetchCoreData.isEmpty ? "heart" : "heart.fill")
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fit)
+                                                .frame(width: 24, height: 24)
                                         }
-                                    } label: {
-                                        Image(systemName: fetchCoreData.isEmpty ? "heart" : "heart.fill")
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                            .frame(width: 24, height: 24)
-                                    }
-                                    ShareLink(item: URL(string: "https://www.themoviedb.org/movie/\(movie!.id)")!) {
-                                        Image(systemName: "square.and.arrow.up")
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                            .frame(width: 24, height: 24)
+                                        ShareLink(item: URL(string: "https://www.themoviedb.org/movie/\(movie!.id)")!) {
+                                            Image(systemName: "square.and.arrow.up")
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fit)
+                                                .frame(width: 24, height: 24)
+                                        }
                                     }
                                 }
-                            }
-                            HStack {
-                                Text(movie!.releaseDate)
-                                Text(movie!.originalLanguage.uppercased())
-                                Text(runTimeString(movie!.runtime))
-                            }
-                            .font(.caption)
-                            HStack {
-                                ForEach(movie!.genres, id: \.id) { genre in
-                                    Text(genre.name)
-                                        .font(.caption)
-                                        .padding(6)
-                                        .background(.gray)
-                                        .clipShape(RoundedRectangle(cornerRadius: 25.0))
-                                }
-                            }
-                        }
-                        VStack(alignment: .leading) {
-                            Text("Overview")
-                                .font(.title2)
-                            Text(movie!.overview)
-                        }
-                        VStack(alignment: .leading) {
-                            Divider()
-                            Text("Cast")
-                                .font(.title2)
-                            ScrollView(.horizontal) {
                                 HStack {
-                                    ForEach(cast, id: \.id) { cast in
-                                        VStack {
-                                            MovieImageCircle(urlPath: cast.profilePath ?? "", height: 100)
-                                            Text(cast.name)
-                                                .font(.callout)
-                                        }
-                                        .frame(width: 100, height: 120)
-                                    }
+                                    Text(movie!.releaseDate)
+                                    Text(movie!.originalLanguage.uppercased())
+                                    Text(runTimeString(movie!.runtime))
                                 }
-                            }
-                        }
-                        VStack(alignment: .leading) {
-                            Divider()
-                            Text("Recommend")
-                                .font(.title2)
-                            ScrollView(.horizontal) {
+                                .font(.caption)
                                 HStack {
-                                    ForEach(recommendation, id: \.id) { movie in
-                                        NavigationLink(destination: DetailsScreen(id: movie.id)) {
-                                            MovieFeatureCard(
-                                                posterPath: movie.posterPath,
-                                                title: movie.title,
-                                                voteAverage: movie.voteAverage
-                                            )
-                                        }
-                                        .frame(width: 100)
+                                    ForEach(movie!.genres, id: \.id) { genre in
+                                        Text(genre.name)
+                                            .font(.caption)
+                                            .padding(6)
+                                            .background(.gray)
+                                            .clipShape(RoundedRectangle(cornerRadius: 25.0))
                                     }
                                 }
-                                .padding(EdgeInsets(top: 0, leading: 10, bottom: 20, trailing: 10))
                             }
-                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 40, trailing: 0))
+                            VStack(alignment: .leading) {
+                                Text("Overview")
+                                    .font(.title2)
+                                Text(movie!.overview)
+                            }
+                            VStack(alignment: .leading) {
+                                Divider()
+                                Text("Cast")
+                                    .font(.title2)
+                                ScrollView(.horizontal) {
+                                    HStack {
+                                        ForEach(cast, id: \.id) { cast in
+                                            VStack {
+                                                MovieImageCircle(urlPath: cast.profilePath ?? "", height: 100)
+                                                Text(cast.name)
+                                                    .font(.callout)
+                                            }
+                                            .frame(width: 100, height: 120)
+                                        }
+                                    }
+                                }
+                            }
+                            VStack(alignment: .leading) {
+                                Divider()
+                                Text("Recommend")
+                                    .font(.title2)
+                                ScrollView(.horizontal) {
+                                    HStack {
+                                        ForEach(recommendation, id: \.id) { movie in
+                                            NavigationLink(destination: DetailsScreen(id: movie.id)) {
+                                                MovieFeatureCard(
+                                                    posterPath: movie.posterPath,
+                                                    title: movie.title,
+                                                    voteAverage: movie.voteAverage
+                                                )
+                                            }
+                                            .frame(width: 120)
+                                        }
+                                    }
+                                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 10))
+                                }
+                            }
                         }
+                        .padding()
                     }
                 }
             }

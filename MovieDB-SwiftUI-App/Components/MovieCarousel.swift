@@ -21,7 +21,7 @@ struct MovieCarousel: View {
                                 .foregroundStyle(.white)
                             Text(movie.releaseDate)
                                 .font(.subheadline)
-                                .foregroundStyle(.gray)
+                                .foregroundStyle(.white)
                         }
                         .padding()
                     }
