@@ -14,7 +14,7 @@ struct RankingScreen: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                LazyVStack {
+                LazyVStack(spacing: 6) {
                     Section {
                         ForEach(Array(movies.enumerated()), id: \.element.id) { index, movie in
                             NavigationLink(destination: DetailsScreen(id: movie.id)) {
@@ -25,10 +25,10 @@ struct RankingScreen: View {
                                     releaseDate: movie.releaseDate
                                 )
                             }
-                            .tint(.gray)
+                            .tint(Color.primary)
                         }
                     } header: {
-                        Picker("What is your favorite color?", selection: $rankingType) {
+                        Picker("Ranking Type", selection: $rankingType) {
                             Text("Popular").tag(0)
                             Text("Rating").tag(1)
                         }

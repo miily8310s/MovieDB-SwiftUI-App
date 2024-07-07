@@ -10,6 +10,7 @@ import SwiftUI
 struct MovieImage: View {
     let urlPath: String
     var height: Int?
+    var contentMode: ContentMode?
 
     func getUrl() -> URL {
         URL(string: "https://image.tmdb.org/t/p/original\(urlPath)")!
@@ -20,7 +21,7 @@ struct MovieImage: View {
             if let image = phase.image {
                 image
                     .resizable()
-                    .aspectRatio(contentMode: .fit)
+                    .aspectRatio(contentMode: contentMode ?? .fit)
             } else if phase.error != nil {
                 Text("No image")
             } else {

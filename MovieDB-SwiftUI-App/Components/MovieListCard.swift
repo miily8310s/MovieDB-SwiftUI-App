@@ -36,8 +36,6 @@ struct MovieListCard: View {
                     .font(.title2)
                     .padding()
             }
-            Divider()
-                .background(.gray)
         }
     }
 }

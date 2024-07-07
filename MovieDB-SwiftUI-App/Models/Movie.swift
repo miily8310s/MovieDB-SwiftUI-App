@@ -61,7 +61,7 @@ struct Dates: Codable {
 // MARK: - NowPlayingMovie
 
 struct NowPlayingMovie: Codable {
-    let backdropPath: String
+    let backdropPath: String?
     let id: Int
     let title: String
     let releaseDate: String
@@ -80,10 +80,11 @@ struct NowPlayingMovie: Codable {
 
 struct MovieDetail: Codable {
     let backdropPath: String
+    let posterPath: String
     let genres: [Genre]
     let homepage: String
     let id: Int
-    let imdbID, overview: String
+    let overview: String
     let originalLanguage: String
     let releaseDate: String
     let runtime: Int
@@ -92,8 +93,8 @@ struct MovieDetail: Codable {
 
     enum CodingKeys: String, CodingKey {
         case backdropPath = "backdrop_path"
+        case posterPath = "poster_path"
         case genres, homepage, id
-        case imdbID = "imdb_id"
         case overview
         case originalLanguage = "original_language"
         case releaseDate = "release_date"
